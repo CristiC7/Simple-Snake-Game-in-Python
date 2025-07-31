@@ -1,128 +1,126 @@
-# Simple-Snake-Game-in-Python
-This is an implementation of the game Snake in Python using the Turtle library. The game lets you control a snake that moves in a fixed direction, eats food to grow, and can pass through the edge of the screen, reappearing on the opposite side (screen wrapping).
+# 🐍 Simple Snake Game in Python
 
-Description of the main code components:
+This is a classic implementation of the **Snake game** in Python using the built-in **Turtle graphics library**.  
+The player controls a snake that moves in a fixed direction, consumes food to grow, and wraps around the screen when reaching the edges.
 
-● Import libraries:
- 
-turtle - used to draw the graphical elements of the game. 
+---
 
-Random - used to generate random food positions. 
+## 🎮 Gameplay Features
 
-● Initializing game parameters:
- 
-WIDTH, HEIGHT - screen dimensions;
+✅ Move using arrow keys
+✅ Eat food to grow
+✅ Food spawns randomly
+✅ Score increases with each food eaten
+✅ Screen wrapping: the snake reappears on the opposite side
+✅ Game Over if the snake hits itself
+✅ Press **Enter** or **Space** to restart after Game Over
 
-FOOD_SIZE - food size; 
+---
 
-DELAY - delay between snake moves (100ms); 
+## 🧠 Code Structure Overview
 
-offsets - dictionary defining the coordinate changes for each direction. 
+### 📦 Imports
+- `turtle` – Used for drawing all graphical elements.
+- `random` – Used for generating random food positions.
 
-● Defining global variables:
- 
-snake - list that holds the snake body segments; 
+---
 
-snake_direction - current direction of movement; 
+### ⚙️ Initialization
 
-food_pos - position of food on the screen; 
+- `WIDTH`, `HEIGHT` – Full screen dimensions.
+- `FOOD_SIZE` – Diameter of food (smaller than snake segment).
+- `DELAY` – Movement delay in milliseconds (100ms).
+- `offsets` – Dictionary for direction control (up/down/left/right).
 
-pen, food, screen - Turtle objects to draw the snake, food, and screen; 
+---
 
-score, score_pen - player's score and the tool to display it. 
+### 📌 Global Variables
+
+- `snake` – List of segments representing the snake's body.
+- `snake_direction` – Current movement direction.
+- `food_pos` – Position of the food.
+- `pen`, `food`, `screen`, `score_pen` – Turtle objects for rendering.
+- `score` – Integer score tracker.
+
+---
+
+## 🔄 Game Functions
+
+### 🔁 `reset()`
+- Resets snake to initial position.
+- Resets food and score.
+- Starts movement loop.
+
+### 🐍 `move_snake()`
+- Moves snake in current direction.
+- Checks collision with self.
+- Checks for food collision.
+- Implements screen wrapping.
+- Redraws the snake segments.
+
+### 🍎 `food_collision()`
+- Checks if head is close enough to food.
+- If true: update score, reposition food, and grow snake.
+
+### 🎯 `get_random_food_pos()`
+- Returns a valid random position inside the screen boundaries.
+
+### 📏 `get_distance(pos1, pos2)`
+- Calculates Euclidean distance between two points.
+
+### ⬆️⬇️⬅️➡️ Direction Controls
+- `go_up()`, `go_down()`, `go_left()`, `go_right()`  
+  Update direction, preventing 180° turn into itself.
+
+### 🧮 `update_score()`
+- Updates score display at top of screen.
+
+### 💀 `game_over()`
+- Stops movement.
+- Displays **GAME OVER** message.
+- Binds **Enter** and **Space** to restart.
+
+### 🔄 `restart_game()`
+- Clears screen and restarts game from scratch.
+
+---
+
+## 🖥️ Graphical Setup
+
+### 📺 Screen Setup
+- Full-screen window
+- Title and background color
+- Turn off automatic animation for smoother updates
+
+### 🎨 Drawing the Border
+- A white rectangle is drawn using a `Turtle` to frame the game area
+
+### 🟨 Snake and 🍎 Food
+- Snake segments are drawn using stamps (square shape)
+- Food is a red circle, scaled smaller than the snake
+
+### 🎯 Score
+- Displayed at the top of the screen using a hidden turtle
+
+---
+
+## 🎮 Controls
+
+- `Arrow Keys` – Move the snake
+- `Space` or `Enter` – Restart after game over
+
+---
+
+## ▶️ How to Run
+
+No external libraries required. Just use Python 3:
+
+```bash
+python SnakeGame.py
+```
+## 👨‍💻 Author
+Made with 🐍 and ❤️ in Python Turtle by CristiC7.
+
+Feel free to fork, suggest improvements, or use this code as a learning resource.
 
 
-Game functionality:
-
-● Game reset (reset()):
-
-Reset the position of the snake and food. 
-
-Resets the score and restarts the game.
-
-● Move snake (move_snake()):
-
-Calculates the new head position.
-
-Check if the snake hits its own body → end game.
-
-If the snake doesn't eat the food, the last body part is discarded.
-
-Implement screen wrapping: if the snake exits the screen, it reappears on the opposite side.
-
-Redraw the snake.
-
-● Food collision (food_collision()):
-
-If the snake touches the food, it is moved to a random position.
-
-Increase the score and refresh the display.
-
-● Generate random food position (get_random_food_pos()):
-
-Calculates a random position on the screen, taking into account its size.
-
-● Calculate the distance between two points (get_distance()):
-
-Use the Euclidean distance formula to check if the snake has touched the food.
-
-● Direction control (go_up(), go_down(), go_left(), go_right()):
-
-Updates the direction of movement, avoiding sudden changes (e.g. can't go directly from "up" to "down").
-
-● Update score (update_score()):
-
-Displays the current score at the top of the screen.
-
-● End game (game_over()):
-
-Displays the message "GAME OVER".
-
-Press Enter or Space to resume the game.
-
-● Restart game (restart_game()):
-
-Resets the game and clears the "GAME OVER" message.
-
-
-Initialization and GUI:
-
-● Setting up the screen (screen = turtle.Screen()):
-
-Set the window size and title.
-
-Disable animations for better performance.
-
-● Drawing the border:
-
-Draw a white rectangle around the screen using a Turtle.
-
-● Creating graphic objects:
-
-Pen - drawing snake; 
-
-Food - drawing food; 
-
-Score Pen (score_pen) - displaying the score. 
-
-● Binding keys for control:
-
-screen.onkey(go_up, "Up") - move up; 
-
-screen.onkey(go_down, "Down") - move down; 
-
-screen.onkey(go_left, "Left") - move left; 
-
-screen.onkey(go_right, "Right") - move right. 
-
-● Starting the game (reset()):
-
-Initialize the snake, its food and its movement.
-
-● Keep program active (turtle.done()):
-
-Keeps the window open to continue the game.
-
-As future improvements, the game could include sounds, obstacles or variable speeds to make it more interesting. 
-
-#Enjoy
