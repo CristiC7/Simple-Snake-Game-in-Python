@@ -8,11 +8,17 @@ The player controls a snake that moves in a fixed direction, consumes food to gr
 ## 🎮 Gameplay Features
 
 ✅ Move using arrow keys
+
 ✅ Eat food to grow
+
 ✅ Food spawns randomly
+
 ✅ Score increases with each food eaten
+
 ✅ Screen wrapping: the snake reappears on the opposite side
+
 ✅ Game Over if the snake hits itself
+
 ✅ Press **Enter** or **Space** to restart after Game Over
 
 ---
